@@ -1,0 +1,199 @@
+<!--<style>
+    body{
+    background-color: #638CB8;
+}
+
+input{
+    width: 100%;
+    padding:12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input::placeholder{
+    color: #d3d3d3;
+}
+
+.submit{
+    background-color: #6BA3E8;
+}
+
+.center-column{
+    width: 600px;
+    margin:20px auto;
+    padding:20px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+}
+
+.item-row{
+    background-color: #906abd;
+    margin:10px;
+    padding:20px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+}
+
+.btn{
+
+}
+
+.btn-danger{
+    background-color: #ffae19;
+    border-color: #e59400;
+}
+
+.btn-info{
+    background-color:aquamarine;
+    border-color:aqua;
+}
+
+.btn-sm{
+    padding:.25rem .5rem;
+    line-height:1.5;
+    border-radius:.2rem}
+</style>
+-->
+{% load static %}
+<html>
+    <head>
+       
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <title>HOME</title>
+    </head>
+    <body>
+        {% block extrahead %}
+            <link href="{% static 'style.css' %}" rel="stylesheet">
+        {% endblock %}
+        <div class="center-column">
+
+            <h3>TO DO</h3>
+
+            <!--  とりあえず削除
+            <form method="POST" action="/">
+                {% csrf_token %}
+                {{form.title}}
+                <input class="btn btn-info" type="submit" name="Create Task">
+            </form>
+            -->
+        
+            <div class="todo-list">
+                <!--  ソースコード：１列
+                <div class="">
+                    {% for task in tasks %}
+                        <div class="item-row">
+                            <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                            <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}">Delete</a>
+                            {% if task.complete ==  True%}
+                            <strike>{{task.title}}</strike>
+                            {% else %}
+                            <span>{{task.title}}</span>
+                            {% endif %}
+            
+                        </div>
+                    {% endfor %}
+                </div>
+                -->
+
+                <!-- 変更 2列 -->
+                <div class="center-title">
+                    <p align="center">Make a ToDo-list. Increase your productivity.</p><br>
+                    <a class="btn-create btn" href="{% url 'new_task' %}">New Task</a>
+                </div>
+
+                <div class="container">
+                    <div class="cont">
+                        <h3 align="center">Doing</h3>
+                        {% for task in tasks %}    
+                            {% if task.complete ==  False%} 
+                              
+                                {% if task.is_delay %}
+                                
+                                <div class="item-row-danger">
+                                    <span>{{task.title}}</span>
+                                    <div class="row-right">
+                                        <span>残り{{task.duedate|timeuntil}}</span>    
+                                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>        
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="item-row">
+                                    <span>{{task.title}}</span>
+                                    <div class="row-right">
+                                        <span>残り{{task.duedate|timeuntil}}</span>    
+                                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>        
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <!--
+                                <div class="item-row">
+                                    <span>{{task.title}}</span>
+                                    <span>{{task.duedate|date:"y/m/d/ H:i"}}</span>
+                                    <div class="row-right">
+                                        <span>残り{{task.duedate|timeuntil}}</span>
+                                        
+                                        {% if task.is_delay %}
+                                        <span>{{task.duedate}}</span>
+                                        {% else %}
+                                        <p>ok!</p>
+                                        {% endif %}
+                                        
+    
+                                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>        
+                                    </div>
+                                </div>
+                                -->
+                                <!--
+                                {% if task.duedate|timeuntil >= "10 minutes" %}
+                                    <div class="item-row">
+                                        <span>{{task.title}}</span>
+                                        <span>{{task.duedate|date:"y/m/d/ H:i"}}</span>
+                                        <span>残り{{task.duedate|timeuntil}}</span>
+                                        
+                                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>    
+                                    </div>
+                                {% else %}
+                                    <div class="item-row-danger">
+                                        <span>{{task.title}}</span>
+                                        <span>{{task.duedate|date:"y/m/d/ H:i"}}</span>
+                                        <span>残り{{task.duedate|timeuntil}}</span>
+                                        
+                                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>    
+                                    </div>
+                                {% endif %}
+                                -->
+                            {% endif %}
+                            
+                        {% endfor %}
+                    </div>
+                    <div class="cont">
+                        <h3 align="center">Done</h3>
+                        {% for task in tasks %}
+
+                            {% if task.complete ==  True%}
+                            <div class="item-row-completed">
+                                <strike>{{task.title}}</strike>
+                                <div class="row-right">
+                                    <strike>{{task.duedate|date:"y/m/d/ H:i"}}</strike>
+                                    <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}"><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div> 
+    </body>
+</html>

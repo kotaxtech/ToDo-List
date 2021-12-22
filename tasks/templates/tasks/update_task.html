@@ -1,0 +1,77 @@
+<!--   ↓ソースコード
+<h3>Update Task</h3>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="Update Task" id="">
+</form>
+-->
+
+
+{% load static %}
+<html>
+    <head>
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+        {{ form.media }}
+        <title>UPDATE TASK</title>
+    </head>
+    <body>
+        <div class="center-column">
+            {% block extrahead %}
+                <link href="{% static 'style.css' %}" rel="stylesheet">
+
+            {% endblock %}
+            <h3>Update Task</h3>
+            
+            <form method="POST" action="">
+                {% csrf_token %}
+                <!--
+                <p>title</p>
+                {{form.title}}
+                <p >content</p>
+                {{form.content}}
+                <p>created-date</p>
+                {{form.created}}
+                <p>updated-date</p>
+                {{form.updated}}
+                <p>due-date</p>
+                {{form.duedate}}
+                <p>complete</p>
+                {{form.complete}}
+                -->
+
+                <table align="center" style="width:75%;">
+                    <tr>
+                        <th>tittle</th>
+                        <th>{{form.title}}</th>
+                    </tr>
+                    <tr>
+                        <th>content</th>
+                        <th>{{form.content}}</th>
+                    </tr>
+                    <tr>
+                        <th>created</th>
+                        <th>{{form.created}}</th>
+                    </tr>
+                    <tr>
+                        <th>updated</th>
+                        <th>{{form.updated}}</th>
+                    </tr>
+                    <tr>
+                        <th>due-date</th>
+                        <th>{{form.duedate}}</th>
+                    </tr>
+                    <tr>
+                        <th>complete</th>
+                        <th>{{form.complete}}</th>
+                    </tr>
+                </table>
+
+                <input type="submit" name="Update Task" id="">
+            </form>
+        </div>
+    </body>
+</html>

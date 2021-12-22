@@ -1,0 +1,138 @@
+body{
+    background-color: #638CB8;
+}
+
+input{
+    width: 100%;
+    padding:12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input::placeholder{
+    color: #d3d3d3;
+}
+
+.submit{
+    background-color: #6BA3E8;
+}
+
+.center-column{
+    width: 100%;
+    margin:20px auto;
+    padding:20px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+}
+
+
+.center-title{
+    text-align: center;
+    width: 100%;
+    margin:0px 0px 40px 0px;
+    padding:0px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.item-row{
+    background-color: #906abd;
+    margin:20px;
+    padding:20px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+}
+
+.item-row-completed{
+    background-color: #4d346d;
+    margin:20px;
+    padding:20px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+}
+
+.item-row-danger{
+    background-color: #d81f38;
+    margin:20px;
+    padding:20px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+    /* 振動させるアニメーション */
+    animation: vibration 0.1s infinite;
+}
+
+/* .item-row-dangerは、プルプル振動させる */
+@keyframes vibration{
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(2px, 2px) rotateZ(1deg)}
+    50% {transform: translate(0px, 2px) rotateZ(0deg)}
+    75% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
+
+.btn{
+    border-radius:.2rem;
+    opacity: 0.8;
+}
+.btn:hover{
+    opacity: 1;
+}
+
+.btn-danger{
+    background-color: #ffae19;
+    border-color: #e59400;
+}
+
+
+
+.btn-info{
+    background-color:aquamarine;
+    border-color:aqua;
+}
+
+
+.btn-sm{
+    padding:.25rem .5rem;
+    line-height:1.5;
+    border-radius:.2rem
+}
+
+.btn-create{
+    width: 500px;
+    /*padding:12px 20px;*/
+    margin: 8px 0;
+    box-sizing: border-box;
+    padding: 15px 40px;
+    background-color: #5dca88;
+    cursor: pointer;
+    box-shadow: 0px 7px #1a7940;
+}
+.btn-create:active{
+    top:7px;
+    box-shadow: none;
+    position: relative;
+    
+}
+
+.row-right{
+    float: right;;
+}
+.row-left{
+    float: left;
+}
+
+.cont{
+    width: 50%;
+    /*background-color: #e59400;*/
+}
+.container{
+    display: flex;
+}
+
